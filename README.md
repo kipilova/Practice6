@@ -330,6 +330,11 @@ docker container run \
  docker image push $DOCKERID/linux_tweet_app:2.0
  ![image](https://github.com/user-attachments/assets/c77f1c4b-893d-4e84-9381-103290d8f2e1)
  ![image](https://github.com/user-attachments/assets/ad588eb1-dc38-445e-b99a-8d75d52492fa)
+
+
+
+
+
  
 ### 1.2 Application Containerization and Microservice Orchestration
 git clone https://github.com/ibnesayeed/linkextractor.git
@@ -341,6 +346,37 @@ tree
 cat linkextractor.py
 ![image](https://github.com/user-attachments/assets/f2a04e00-bae0-4082-b9a7-6c72c62716c9)
 ./linkextractor.py http://example.com/
+ls -l linkextractor.py
+python3 linkextractor.py
+git checkout step1
+tree
+docker image build -t linkextractor:step1 .
+![image](https://github.com/user-attachments/assets/3329ccdb-7523-4dd5-a0b1-504dca6ff72d)
+docker image ls
+![image](https://github.com/user-attachments/assets/4432d13b-ec25-4a65-ba2a-3ff8d8316042)
+docker container run -it --rm linkextractor:step1 http://example.com/
+![image](https://github.com/user-attachments/assets/27f25e46-7be5-47f8-80bf-d81a19e9f02a)
+git checkout step2
+cat linkextractor.py
+![image](https://github.com/user-attachments/assets/2bcd42fa-22b0-4b75-aacf-18f6aa457b42)
+docker image build -t linkextractor:step2 .
+![image](https://github.com/user-attachments/assets/c1089204-1bb4-4efc-9618-bc994bd303b7)
+docker image ls
+![image](https://github.com/user-attachments/assets/03d6c23a-c757-487c-bf32-8af0efc21f48)
+docker container run -it --rm linkextractor:step2 https://training.play-with-docker.com/
+
+
+
+
+
+
+### 1.3 Deploying a Multi-Service App in Docker Swarm Mode
+
+
+
+
+
+
 
 
 
