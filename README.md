@@ -331,4 +331,16 @@ docker container run \
  ![image](https://github.com/user-attachments/assets/c77f1c4b-893d-4e84-9381-103290d8f2e1)
  ![image](https://github.com/user-attachments/assets/ad588eb1-dc38-445e-b99a-8d75d52492fa)
  
+### 1.2 Application Containerization and Microservice Orchestration
+git clone https://github.com/ibnesayeed/linkextractor.git
+cd linkextractor
+git checkout demo
+git checkout step0
+tree
+![image](https://github.com/user-attachments/assets/f921bab8-c6df-4c9b-823d-ccbe0a9a3b33)
+cat linkextractor.py
+![image](https://github.com/user-attachments/assets/f2a04e00-bae0-4082-b9a7-6c72c62716c9)
+./linkextractor.py http://example.com/
+
+
 
