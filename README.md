@@ -59,4 +59,7 @@ docker image inspect --format "{{ json .RootFS.Layers }}" 0e38039f22b1
 ![image](https://github.com/user-attachments/assets/1e9988b1-a3bd-4fa6-8969-941467e70716)
 
 ### 1.3 Deploy and Managing Multiple Containers:
-
+docker swarm init --advertise-addr $(hostname -i)
+![image](https://github.com/user-attachments/assets/082c203b-fce9-4f57-85ff-c78108bb6319)
+docker swarm join --token SWMTKN-1-2x110nj9r19jmbxyyeo76fvjxy1h429bswymgcfunx3t74jy28-1j1s7dawiespjtdj72r4mxnjo 192.168.0.8:2377
+![image](https://github.com/user-attachments/assets/13fb0888-035e-4cd0-93e2-188435683bf8)
