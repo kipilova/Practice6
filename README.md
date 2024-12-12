@@ -1,6 +1,8 @@
 # Practice6
 Проектирование и развертывание веб-решений в эко-системе Python - задание 6
 
+# Getting Started Walk-through for IT Pros and System Administrators
+
 ## Stage 1: The Basics
 
 ### 1.1 Your First Linux Containers:
@@ -130,11 +132,110 @@ docker network
 docker network ls
 ![image](https://github.com/user-attachments/assets/929578da-629e-4a1c-afb9-12555cb07467)
 docker network inspect bridge
+![image](https://github.com/user-attachments/assets/f275163a-24e3-4245-a09b-81a3f6fc05d5)
+![image](https://github.com/user-attachments/assets/2e393fa0-598b-4de7-b7c1-bf5d7b39cd95)
+docker run -it --privileged --network host alpine /bin/sh
+apk update
+apk add bridge-utils
+brctl show
+![image](https://github.com/user-attachments/assets/b07df937-ff02-416b-b81f-e89af42a2f47)
+ip a
+![image](https://github.com/user-attachments/assets/9c0c5fce-774c-4bfb-ab7b-d150f41db95d)
+docker run -dt ubuntu sleep infinity
+docker ps
+![image](https://github.com/user-attachments/assets/4dbb2666-5e14-4e4c-89a8-d9b6da42485b)
+docker network inspect bridge
+![image](https://github.com/user-attachments/assets/1528b2b1-514d-48df-b802-11d109bd9291)
+docker run --name web1 -d -p 8080:80 nginx
+docker ps
+![image](https://github.com/user-attachments/assets/dff1057d-1a6f-4b46-bc85-dd082ce0517f)
+curl 127.0.0.1:8080
+![image](https://github.com/user-attachments/assets/ab3a93bd-c1e4-4ffe-9a44-a9cc5acb3af7)
+![image](https://github.com/user-attachments/assets/24312e07-80a7-4af3-93cc-aaf38e94d191)
+docker swarm init --advertise-addr $(hostname -i)
+![image](https://github.com/user-attachments/assets/8aa32db1-90ce-499c-9a7a-5b2439bf6822)
+docker swarm join --token SWMTKN-1-0lehhmzcxoovysiu8naaa8mpmytptgpm4llm2kglnc2gdxis68-d7boogipuoqa4aa1k3rcg87d4 192.168.0.27:2377
+![image](https://github.com/user-attachments/assets/0b3fa857-d8c2-4dc2-a070-9e0e190d7625)
+docker node ls
+![image](https://github.com/user-attachments/assets/fa9bfcd3-a478-41ec-8a21-80f77f6087c5)
+docker network create -d overlay overnet
+![image](https://github.com/user-attachments/assets/5802bed7-65bb-49ad-822c-fa9dffd3b1e2)
+docker network ls
+![image](https://github.com/user-attachments/assets/bbe4f091-96fb-46dd-a6e6-29cffa82e554)
+Docker network ls
+![image](https://github.com/user-attachments/assets/c46ec07f-2f26-47ee-8b69-aa0b533c6be0)
+docker network inspect overnet
+![image](https://github.com/user-attachments/assets/40d8c8cb-f27a-4e8a-bc4c-b0e6b934e772)
+docker service create --name myservice \
+--network overnet \
+--replicas 2 \
+ubuntu sleep infinity
+![image](https://github.com/user-attachments/assets/320d71ab-d28a-46bd-93ae-bf36362d572d)
+docker service ls
+![image](https://github.com/user-attachments/assets/2f248c29-3896-4ffe-b48a-f97064d653b7)
+docker service ps myservice
+![image](https://github.com/user-attachments/assets/7fe58a2f-6035-4011-bb94-86f78cb37613)
+docker network ls
+![image](https://github.com/user-attachments/assets/60677146-4afb-4d6e-9441-890b65f0b5f1)
+docker network inspect overnet
+![image](https://github.com/user-attachments/assets/65c6b829-db25-4172-a683-667c651bc6c4)
+docker network inspect overnet
+![image](https://github.com/user-attachments/assets/990ca352-cbed-4fd2-9c6c-11970d07f256)
+docker ps
+![image](https://github.com/user-attachments/assets/b1c407df-d685-41fc-ab10-ff2a43f6d26c)
+docker exec -it d95d516b0581 /bin/bash
+apt-get update && apt-get install -y iputils-ping
+ping -c5 10.0.0.6
+![image](https://github.com/user-attachments/assets/85b906bb-bb55-40bd-b2d7-b2b32ef76bfb)
+cat /etc/resolv.conf
+![image](https://github.com/user-attachments/assets/aa6fdd8f-3f82-4855-8adb-7e8c03fd5bba)
+ping -c5 myservice
+![image](https://github.com/user-attachments/assets/181aefb9-7536-4e8c-ba1d-e217a55c88cb)
+docker swarm leave --force
 
+### 2.4 Docker Orchestration Hands-on Lab
+docker run -dt ubuntu sleep infinity
+![image](https://github.com/user-attachments/assets/a3cf0230-4491-4c01-9e11-f3a43d5331bc)
+docker ps
+![image](https://github.com/user-attachments/assets/da18ad81-2a10-451e-82e5-7d6cf867bf20)
+docker swarm init --advertise-addr $(hostname -i)
+![image](https://github.com/user-attachments/assets/819376be-7b93-42dd-9171-c428c8c9f9cc)
+docker swarm join --token SWMTKN-1-4ynei7av6hewtg5q3asmrq0p0dtu0uetr9l5mkv8scd5foi3pn-cnqu3ouewyrzjcwc13uk403ii 192.168.0.17:2377
+![image](https://github.com/user-attachments/assets/5943db25-ee63-4464-bf6b-fe7f97f54cfa)
+docker node ls
+![image](https://github.com/user-attachments/assets/d7ef4c0a-7a27-438f-94a4-a66ea49d7f35)
+docker service create --name sleep-app ubuntu sleep infinity
+![image](https://github.com/user-attachments/assets/3d5f6938-d6cf-42e8-8548-98325312a95a)
+docker service ls
+![image](https://github.com/user-attachments/assets/1f6c8f5d-9eb9-4bdb-bb9b-1363fa353557)
+docker service update --replicas 7 sleep-app
+![image](https://github.com/user-attachments/assets/e9641317-6330-45c6-8da8-60a71b41770e)
+docker service ps sleep-app
+![image](https://github.com/user-attachments/assets/95a130a7-5299-42fd-9281-6283d56847c9)
+docker service update --replicas 4 sleep-app
+![image](https://github.com/user-attachments/assets/b0640632-fb1f-4f35-ad0a-e6d3dafe63d6)
+docker service ps sleep-app
+![image](https://github.com/user-attachments/assets/1963ab3b-9b0c-4ae5-a119-43c08ff9ba3b)
+docker node ls
+![image](https://github.com/user-attachments/assets/c2a61d09-c685-4e2b-8d48-b6311ecd74b0)
+docker ps
+![image](https://github.com/user-attachments/assets/fccfedee-17b5-4a24-beb8-d74918bff93e)
+docker node update --availability drain ipwe7oaen46s0uj7jb3uhttcd
+docker node ls
+![image](https://github.com/user-attachments/assets/fd171aea-e4b8-4918-be92-4977af367a41)
+docker ps
+![image](https://github.com/user-attachments/assets/7df04e59-aef1-4237-b090-3dfcdeab000e)
+docker service ps sleep-app
+![image](https://github.com/user-attachments/assets/5148e188-385d-4644-854d-bb22c6ba2128)
+docker service rm sleep-app
+docker ps
+![image](https://github.com/user-attachments/assets/f125d396-3e49-4d17-9df3-4829deffba86)
+docker kill 06c092d5c0cc
+docker swarm --force
 
-
-
-
+## Stage 3: Moving to Production
+Ссылки не работают
+![image](https://github.com/user-attachments/assets/26dc4411-08d7-4de2-844f-63dcf0594613)
 
 
 
