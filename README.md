@@ -237,18 +237,98 @@ docker swarm --force
 Ссылки не работают
 ![image](https://github.com/user-attachments/assets/26dc4411-08d7-4de2-844f-63dcf0594613)
 
+# Getting Started Walk-through for Developers
 
+## Stage 1: The Basics
 
-
-
-
-
-
-
-
-
-
-
-
-
+### 1.1 Docker for Beginners - Linux
+git clone https://github.com/dockersamples/linux_tweet_app
+docker container run alpine hostname
+docker container ls --all
+![image](https://github.com/user-attachments/assets/3b85e729-4715-4249-8a46-313d49847c5c)
+docker container run --interactive --tty --rm ubuntu bash
+ls /
+![image](https://github.com/user-attachments/assets/90d4747c-8366-4ed5-9b9c-27f29ab2f400)
+ps aux
+![image](https://github.com/user-attachments/assets/d5e60fff-0ccb-431c-9a5b-00879ebd5271)
+cat /etc/issue
+![image](https://github.com/user-attachments/assets/5aee41ae-6461-494d-8b57-214c7ae962d4)
+exit
+cat /etc/issue
+![image](https://github.com/user-attachments/assets/726e0a5c-ac13-4908-8be0-ffdd9f389c15)
+docker container run \
+ --detach \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+ mysql:latest
+ docker container ls
+ ![image](https://github.com/user-attachments/assets/259700d2-5c35-4e31-8889-2d860bfe2126)
+ docker container logs mydb
+ ![image](https://github.com/user-attachments/assets/b8f351dc-164a-4364-9bf3-588fcb484ef4)
+ docker container top mydb
+ ![image](https://github.com/user-attachments/assets/7bcebdd4-957d-4bdf-90cd-235a714fe2ed)
+ docker exec -it mydb \
+ mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+ ![image](https://github.com/user-attachments/assets/a5f1c6e8-f1b2-4acf-beff-98122a826837)
+ docker exec -it mydb sh
+ mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+ ![image](https://github.com/user-attachments/assets/2bf07031-aa5f-4b2c-a9cc-c6a1b7fe10e2)
+ exit
+ cd linux_tweet_app
+ cat Dockerfile
+ ![image](https://github.com/user-attachments/assets/5aa3ca7a-1553-4797-9f3a-19306293f095)
+ export DOCKERID=akipilova
+ echo $DOCKERID
+ ![image](https://github.com/user-attachments/assets/67316b8d-6381-4029-9de2-f22971a62327)
+ docker image build --tag $DOCKERID/linux_tweet_app:1.0 .
+ ![image](https://github.com/user-attachments/assets/a35548d5-a292-445d-936f-dccebc3fde24)
+ docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+ ![image](https://github.com/user-attachments/assets/ebc44108-fc8f-4bd4-a42a-3c3de2057672)
+ docker container rm --force linux_tweet_app
+ docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html \
+ $DOCKERID/linux_tweet_app:1.0
+ ![image](https://github.com/user-attachments/assets/ebf8ef0c-636e-428c-8a38-99b2b1a0527d)
+ cp index-new.html index.html
+ ![image](https://github.com/user-attachments/assets/a2b85d76-89cd-4cd9-8730-04935743cf95)
+ docker rm --force linux_tweet_app
+ docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+ ![image](https://github.com/user-attachments/assets/92629aae-15b0-48f7-8b4a-dc5c912cba30)
+ docker rm --force linux_tweet_app
+ docker image build --tag $DOCKERID/linux_tweet_app:2.0 .
+ ![image](https://github.com/user-attachments/assets/4ff213f5-e89b-4c50-a4c5-111395735b48)
+ docker image ls
+ ![image](https://github.com/user-attachments/assets/5505d43e-30c9-4690-be1c-0bb7c781aed9)
+ docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:2.0
+ ![image](https://github.com/user-attachments/assets/bbe29e39-0034-4a9c-9990-b476e11f7297)
+  docker container run \
+ --detach \
+ --publish 8080:80 \
+ --name old_linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+ ![image](https://github.com/user-attachments/assets/07c633a0-dbfa-4c35-ab1a-b4f1f123f6c7)
+ docker image ls -f reference="$DOCKERID/*"
+ ![image](https://github.com/user-attachments/assets/f28bc5a2-4302-4dc0-b234-8d473260d65d)
+ docker login -u akipilova
+ docker image push $DOCKERID/linux_tweet_app:1.0
+ ![image](https://github.com/user-attachments/assets/2ff31226-47f9-4921-a9d2-6617e8dd38e6)
+ docker image push $DOCKERID/linux_tweet_app:2.0
+ ![image](https://github.com/user-attachments/assets/c77f1c4b-893d-4e84-9381-103290d8f2e1)
+ ![image](https://github.com/user-attachments/assets/ad588eb1-dc38-445e-b99a-8d75d52492fa)
+ 
 
