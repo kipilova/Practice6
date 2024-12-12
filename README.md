@@ -81,6 +81,70 @@ docker service ps voting_stack_vote
 docker service scale voting_stack_vote=5
 ![image](https://github.com/user-attachments/assets/910a55b4-da59-43e3-93a4-6858c8df2d6c)
 
+## Stage 2: Digging Deeper
+
+### 2.1 Security Lab: Seccomp
+git clone https://github.com/docker/labs
+cd labs/security/seccomp
+docker run --rm -it --cap-add ALL --security-opt apparmor=unconfined --security-opt seccomp=seccomp-profiles/deny.json alpine sh
+![image](https://github.com/user-attachments/assets/e9c90119-6a06-4a3f-9911-8c592c74bbb9)
+cat seccomp-profiles/deny.json
+![image](https://github.com/user-attachments/assets/09b3e35d-c688-4195-9041-2955d7246c91)
+docker run --rm -it --security-opt seccomp=unconfined debian:jessie sh
+docker run -it alpine /bin/sh
+apk add --update strace
+![image](https://github.com/user-attachments/assets/2abe5c82-4900-4127-95e1-1e6c98ecd4b5)
+strace -c -f -S name whoami 2>&1 1>/dev/null | tail -n +3 | head -n -2 | awk '{print $(NF)}'
+![image](https://github.com/user-attachments/assets/a3766221-5cee-4e45-a89a-9a9c68f36085)
+exit
+docker run --rm -it --security-opt seccomp=./seccomp-profiles/default-no-chmod.json alpine sh
+chmod 777 / -v
+![image](https://github.com/user-attachments/assets/9b983c8f-38de-4cfb-8e1e-eb85c13cb9de)
+exit
+docker run --rm -it --security-opt seccomp=./seccomp-profiles/default.json alpine sh
+chmod 777 / -v
+![image](https://github.com/user-attachments/assets/382ff607-6505-40ee-9aea-aef04acc25ec)
+exit
+cat ./seccomp-profiles/default.json | grep chmod
+![image](https://github.com/user-attachments/assets/81208888-54e6-4a69-a340-5592b3591661)
+cat ./seccomp-profiles/default-no-chmod.json | grep chmod
+
+### 2.2 Security Lab: Capabilities
+docker run --rm -it alpine chown nobody /
+docker run --rm -it --cap-drop ALL --cap-add CHOWN alpine chown nobody /
+docker run --rm -it --cap-drop CHOWN alpine chown nobody /
+![image](https://github.com/user-attachments/assets/ab71c0ce-5a4c-4627-b25a-babfe30309d7)
+docker run --rm -it --cap-add chown -u nobody alpine chown nobody /
+![image](https://github.com/user-attachments/assets/95ef6b17-4de4-46f6-bc37-3c7a226999a8)
+docker run --rm -it alpine sh -c 'apk add -U libcap; capsh --print'
+![image](https://github.com/user-attachments/assets/6ba0e8e3-9ff8-4a3f-83a0-165825095c52)
+![image](https://github.com/user-attachments/assets/9414606a-1619-408e-9f41-c983986a3ca7)
+docker run --rm -it alpine sh -c 'apk add -U libcap;capsh --help'
+![image](https://github.com/user-attachments/assets/e9bae9b5-4317-4dce-978e-6b9bfa71eaf0)
+![image](https://github.com/user-attachments/assets/f75ed6e7-6cb8-4c3d-a95b-e2f0525086fa)
+![image](https://github.com/user-attachments/assets/b8c8936d-b134-4781-9046-3b0fcd457075)
+
+### 2.3 Docker Networking Hands-on Lab
+docker network
+![image](https://github.com/user-attachments/assets/17fb6e78-7c0a-485f-a2f3-4cebf5d8062c)
+docker network ls
+![image](https://github.com/user-attachments/assets/929578da-629e-4a1c-afb9-12555cb07467)
+docker network inspect bridge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
