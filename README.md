@@ -371,6 +371,31 @@ docker container run -it --rm linkextractor:step2 https://training.play-with-doc
 
 
 ### 1.3 Deploying a Multi-Service App in Docker Swarm Mode
+docker swarm init --advertise-addr $(hostname -i)
+![image](https://github.com/user-attachments/assets/67d65d34-fcb1-48ab-8f8a-92ee13471545)
+docker node ls
+![image](https://github.com/user-attachments/assets/3bfd02ae-3736-4088-acad-808eae0bc69d)
+git clone https://github.com/docker/example-voting-app
+cd example-voting-app
+![image](https://github.com/user-attachments/assets/5cde70ac-fc46-48f2-9b21-9572012336ae)
+docker stack deploy --compose-file=docker-stack.yml voting_stack
+![image](https://github.com/user-attachments/assets/8f913a55-8fab-41b5-a830-91f9d76f6038)
+docker stack ls
+![image](https://github.com/user-attachments/assets/a3a69284-d1fe-4695-afb4-e61aa34e47e4)
+docker stack services voting_stack
+![image](https://github.com/user-attachments/assets/f3dd649a-09dc-4b58-98d1-c75c096f0503)
+docker service ps voting_stack_vote
+![image](https://github.com/user-attachments/assets/8e6e6d09-4d19-4bb7-8e9d-b9e26cb1d470)
+
+## Stage 2: Digging Deeper
+
+
+
+
+
+
+
+
 
 
 
