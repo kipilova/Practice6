@@ -63,3 +63,27 @@ docker swarm init --advertise-addr $(hostname -i)
 ![image](https://github.com/user-attachments/assets/082c203b-fce9-4f57-85ff-c78108bb6319)
 docker swarm join --token SWMTKN-1-2x110nj9r19jmbxyyeo76fvjxy1h429bswymgcfunx3t74jy28-1j1s7dawiespjtdj72r4mxnjo 192.168.0.8:2377
 ![image](https://github.com/user-attachments/assets/13fb0888-035e-4cd0-93e2-188435683bf8)
+docker node ls
+![image](https://github.com/user-attachments/assets/09436ef3-24f5-4bc3-b459-c541b789951e)
+git clone https://github.com/docker/example-voting-app
+cd example-voting-app
+![image](https://github.com/user-attachments/assets/43c9f547-de29-4dec-8f96-16cd31e1b1f1)
+cat docker-stack.yml
+![image](https://github.com/user-attachments/assets/a3e03f40-2deb-49cc-9c3c-801f03f41784)
+docker stack deploy --compose-file=docker-stack.yml voting_stack
+![image](https://github.com/user-attachments/assets/2365db2e-d78e-4d37-9aa7-286f0fc6c7dc)
+docker stack ls
+![image](https://github.com/user-attachments/assets/365b89e1-8838-4883-9868-eba9031b739a)
+docker stack services voting_stack
+![image](https://github.com/user-attachments/assets/a2696dc2-3b77-4f66-9494-b6c4114931a9)
+docker service ps voting_stack_vote
+![image](https://github.com/user-attachments/assets/8b858419-b284-49a4-8096-6a682220a875)
+docker service scale voting_stack_vote=5
+![image](https://github.com/user-attachments/assets/910a55b4-da59-43e3-93a4-6858c8df2d6c)
+
+
+
+
+
+
+
