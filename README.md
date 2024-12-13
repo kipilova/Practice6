@@ -331,11 +331,6 @@ docker container run \
  ![image](https://github.com/user-attachments/assets/c77f1c4b-893d-4e84-9381-103290d8f2e1)
  ![image](https://github.com/user-attachments/assets/ad588eb1-dc38-445e-b99a-8d75d52492fa)
 
-
-
-
-
- 
 ### 1.2 Application Containerization and Microservice Orchestration
 git clone https://github.com/ibnesayeed/linkextractor.git
 cd linkextractor
@@ -391,29 +386,42 @@ curl -i http://localhost:5000/api/http://example.com/
 ![image](https://github.com/user-attachments/assets/e844ec8e-b878-490d-bd2e-2df250cfafab)
 ![image](https://github.com/user-attachments/assets/c8e2aff4-b56b-40e7-8613-7a5c443186af)
 docker container rm -f linkextractor
-
-
-
-docker container logs linkextractor
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+git checkout step4
+cat docker-compose.yml
+![image](https://github.com/user-attachments/assets/f02e5a2e-2f74-4a7a-970c-f224d6441df7)
+docker-compose up -d --build
+![image](https://github.com/user-attachments/assets/26d89506-0024-4dd3-a65e-4711d67f3322)
+docker container ls
+![image](https://github.com/user-attachments/assets/f2f5b526-4940-4a16-955b-453985840074)
+curl -i "http://localhost:5000/api/http://example.com/"
+![image](https://github.com/user-attachments/assets/3567b377-58f5-41d4-bcd5-5540aa1bacf7)
+Invoke-WebRequest -Uri "http://localhost:5000/api/http://example.com/"
+![image](https://github.com/user-attachments/assets/6127a127-73f1-47a8-a868-85520a744846)
+sed -i 's/Link Extractor/Super Link Extractor/g' www/index.php
+git reset --hard
+docker-compose down
+git checkout step5
+![image](https://github.com/user-attachments/assets/faeff643-1af0-44f1-b899-c4e4c4548938)
+![image](https://github.com/user-attachments/assets/41ff592a-dd9e-453a-a6b7-5a165eaabfe5)
+![image](https://github.com/user-attachments/assets/d74766a3-7bdb-4432-99de-fd715ae20fd4)
+docker-compose up -d --build
+![image](https://github.com/user-attachments/assets/a67dcc73-a6cf-413a-a12d-2b3e28867e16)
+docker-compose exec redis redis-cli monitor
+sed -i 's/Link Extractor/Super Link Extractor/g' www/index.php
+git reset --hard
+docker-compose down
+git checkout step6
+![image](https://github.com/user-attachments/assets/06197d43-91c8-44f0-b8da-fd5493912c6f)
+![image](https://github.com/user-attachments/assets/0a2a1291-2d59-493f-be62-993146625423)
+![image](https://github.com/user-attachments/assets/1c986035-b5a3-4291-9489-2c5731c46e0c)
+docker-compose up -d --build
+![image](https://github.com/user-attachments/assets/7bac7687-a132-4e6f-a008-ea7a2a7426f4)
+Invoke-WebRequest -Uri "http://localhost:4567/api/http://example.com/"
+![image](https://github.com/user-attachments/assets/17cfff3f-3b3e-4b86-8cc0-83d1c800ff6f)
+tail -f logs/extraction.log
+docker-compose down
+cat logs/extraction.log
+![image](https://github.com/user-attachments/assets/aadd4ec2-feac-4a3c-bff0-49f5d125f187)
 
 ### 1.3 Deploying a Multi-Service App in Docker Swarm Mode
 docker swarm init --advertise-addr $(hostname -i)
