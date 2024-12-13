@@ -464,6 +464,16 @@ docker-compose up
 
 ### 2.4 Live Debugging Node.js with Docker and Visual Studio Code
 ![image](https://github.com/user-attachments/assets/462c88d8-b37f-431a-a70b-c05bef362666)
+![image](https://github.com/user-attachments/assets/7d6e1552-9a25-4894-b117-0e8c3bb53cad)
+![image](https://github.com/user-attachments/assets/4d10b443-b7a8-4905-8031-7c702b370df0)
+![image](https://github.com/user-attachments/assets/8f383116-2928-4f2b-861d-8931bff55318)
+![image](https://github.com/user-attachments/assets/77d4d916-51a6-4609-8d6f-a2526510ab60)
+![image](https://github.com/user-attachments/assets/be331673-a3c8-44ea-9923-a2dbf29acbb9)
+
+
+
+
+
 
 
 
