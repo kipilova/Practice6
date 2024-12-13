@@ -442,6 +442,39 @@ docker service ps voting_stack_vote
 
 ## Stage 2: Digging Deeper
 
+### 2.1 Java Development: Eclipse
+![image](https://github.com/user-attachments/assets/7cdd2097-3c64-4fdd-ba51-0aebd80ff19f)
+![image](https://github.com/user-attachments/assets/1b6abfad-00a3-4be4-bb40-ac84243c89bf)
+![image](https://github.com/user-attachments/assets/e983b800-9792-488b-972f-ec158f764f45)
+git clone https://github.com/docker/labs
+cd labs/developer-tools/java-debugging
+![image](https://github.com/user-attachments/assets/66f33d6b-001f-49e2-a378-6443fe6d5b8e)
+![image](https://github.com/user-attachments/assets/a846ddbe-2ad9-4891-8cc0-24fcc0231164)
+![image](https://github.com/user-attachments/assets/52bec19a-4233-41e0-a484-3851cd8aeae2)
+![image](https://github.com/user-attachments/assets/1bc06b8e-8153-448e-9de3-b051774a8f85)
+![image](https://github.com/user-attachments/assets/28868f24-b48f-48ff-b677-f1cb9ba69817)
+docker-compose up
+![image](https://github.com/user-attachments/assets/d346b811-9919-4632-84bc-5165d527b199)
+
+
+
+
+
+
+
+### 2.4 Live Debugging Node.js with Docker and Visual Studio Code
+![image](https://github.com/user-attachments/assets/462c88d8-b37f-431a-a70b-c05bef362666)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
