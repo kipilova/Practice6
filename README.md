@@ -346,6 +346,47 @@ tree
 cat linkextractor.py
 ![image](https://github.com/user-attachments/assets/f2a04e00-bae0-4082-b9a7-6c72c62716c9)
 ./linkextractor.py http://example.com/
+![image](https://github.com/user-attachments/assets/25e58906-6155-4f20-a757-9dc47eaa8a85)
+![image](https://github.com/user-attachments/assets/8ffa3ea7-1a9b-4f94-bb38-71d1ec549799)
+ls -l linkextractor.py
+![image](https://github.com/user-attachments/assets/1b20eb85-9d39-4bd6-b958-384ce0ec8732)
+python3 linkextractor.py
+![image](https://github.com/user-attachments/assets/c4ac3bfb-bc74-4568-b410-d17e5e2ee70d)
+python linkextractor.py
+![image](https://github.com/user-attachments/assets/ef6dd1d0-ed83-47bd-aa9c-97e5d36c46bf)
+git checkout step1
+cat Dockerfile
+![image](https://github.com/user-attachments/assets/7b996a04-85fd-4fe5-a7bd-f9c35e30702b)
+docker image build -t linkextractor:step1 .
+![image](https://github.com/user-attachments/assets/21b70fc7-9f70-4a1e-ae7d-49b060290dc9)
+docker image ls
+![image](https://github.com/user-attachments/assets/b7489bf9-5945-40ea-9352-0769b003c094)
+docker container run -it --rm linkextractor:step1 http://example.com/
+![image](https://github.com/user-attachments/assets/62385eef-92cd-4192-a15b-3d6c7863f2b9)
+![image](https://github.com/user-attachments/assets/dd5e742b-89e5-44d4-820b-33e6607f9e6c)
+docker build -t linkextractor:step1 .
+![image](https://github.com/user-attachments/assets/0588d737-cafc-450c-abf5-ac62b6a4351e)
+docker container run -it --rm linkextractor:step1 http://example.com/
+![image](https://github.com/user-attachments/assets/3241fda8-0888-4e86-9ad4-e0d70e02b44a)
+docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/
+![image](https://github.com/user-attachments/assets/3c9af064-45bc-40ae-a032-ae20ee9984bc)
+git checkout step2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ls -l linkextractor.py
 python3 linkextractor.py
 git checkout step1
