@@ -371,40 +371,44 @@ docker container run -it --rm linkextractor:step1 http://example.com/
 docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/
 ![image](https://github.com/user-attachments/assets/3c9af064-45bc-40ae-a032-ae20ee9984bc)
 git checkout step2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ls -l linkextractor.py
-python3 linkextractor.py
-git checkout step1
-tree
-docker image build -t linkextractor:step1 .
-![image](https://github.com/user-attachments/assets/3329ccdb-7523-4dd5-a0b1-504dca6ff72d)
-docker image ls
-![image](https://github.com/user-attachments/assets/4432d13b-ec25-4a65-ba2a-3ff8d8316042)
-docker container run -it --rm linkextractor:step1 http://example.com/
-![image](https://github.com/user-attachments/assets/27f25e46-7be5-47f8-80bf-d81a19e9f02a)
-git checkout step2
-cat linkextractor.py
-![image](https://github.com/user-attachments/assets/2bcd42fa-22b0-4b75-aacf-18f6aa457b42)
 docker image build -t linkextractor:step2 .
-![image](https://github.com/user-attachments/assets/c1089204-1bb4-4efc-9618-bc994bd303b7)
 docker image ls
-![image](https://github.com/user-attachments/assets/03d6c23a-c757-487c-bf32-8af0efc21f48)
+![image](https://github.com/user-attachments/assets/76c79921-ca0a-4ac2-afc2-4deefc409f73)
 docker container run -it --rm linkextractor:step2 https://training.play-with-docker.com/
+![image](https://github.com/user-attachments/assets/d64b7007-7ccf-4231-9e3b-afb556d1e446)
+docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/
+![image](https://github.com/user-attachments/assets/6e0e4ebd-63e6-4f04-b80d-a85916c5bb34)
+git checkout step3
+cat Dockerfile
+![image](https://github.com/user-attachments/assets/9f66f320-8a68-4ae2-9385-8258ecddd2dc)
+![image](https://github.com/user-attachments/assets/f499ac5b-c1ce-4175-a896-d8616735cd93)
+docker image build -t linkextractor:step3 .
+docker container run -d -p 5000:5000 --name=linkextractor linkextractor:step3
+![image](https://github.com/user-attachments/assets/7d5aac7a-a3ca-4b9a-a372-667f954d05c3)
+docker container ls
+![image](https://github.com/user-attachments/assets/164b9fd4-ceaa-4fc7-86c1-503951708121)
+curl -i http://localhost:5000/api/http://example.com/
+![image](https://github.com/user-attachments/assets/e844ec8e-b878-490d-bd2e-2df250cfafab)
+![image](https://github.com/user-attachments/assets/c8e2aff4-b56b-40e7-8613-7a5c443186af)
+docker container rm -f linkextractor
+
+
+
+docker container logs linkextractor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
